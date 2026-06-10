@@ -1,0 +1,413 @@
+T1053.005 - Scheduled Task
+
+MITRE:
+
+T1053.005
+Scheduled Task
+
+Kenapa?
+
+mudah disimulasikan
+mudah terlihat di Sysmon
+mudah dibuat rule
+severity Medium masuk akal
+bisa dibuat True Positive dan False Positive
+Skenario True Positive
+
+Atomic Red Team membuat Scheduled Task:
+
+schtasks /create ...
+
+Alert:
+
+Medium Severity
+
+Analisis:
+
+User membuat Scheduled Task tidak biasa
+
+Status:
+
+True Positive
+
+Karena memang simulasi serangan.
+
+Skenario False Positive
+
+Administrator membuat Scheduled Task untuk backup otomatis.
+
+Alert yang sama muncul.
+
+Analisis:
+
+Task dibuat oleh administrator resmi
+Task sesuai change management
+Tidak ada indikasi malicious activity
+
+Status:
+
+False Positive
+Besok kita kerjakan 1–7
+1. Alert Validation
+
+Contoh:
+
+Rule Name
+Timestamp
+Host
+User
+Command Line
+2. Severity Assessment
+
+Kita tentukan:
+
+Medium
+
+dan tulis alasannya.
+
+3. MITRE Analysis
+T1053.005
+Scheduled Task
+Persistence
+4. False Positive Analysis
+
+Apakah ini admin?
+
+Apakah ada maintenance?
+
+Apakah ada ticket?
+
+5. Investigation Notes
+
+Format analyst note.
+
+6. Disposition
+True Positive
+
+atau
+
+False Positive
+7. Case Closure
+
+Format penutupan case seperti SOC sungguhan.
+
+Hasil akhirnya bukan hanya alert di Wazuh, tetapi sebuah repo GitHub baru yang menunjukkan kemampuan:
+
+Alert Triage
+Case Investigation
+MITRE Analysis
+Incident Handling
+Case Closure
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------
+# SOC Lab Project Context
+
+## Overview
+
+This document serves as a reference for future SOC lab projects built within the same environment. It contains infrastructure details, previously completed projects, common troubleshooting notes, and lessons learned throughout the lab development process.
+
+---
+
+# Current Environment
+
+## Host System
+
+- Linux Desktop
+- VirtualBox
+
+## Security Stack
+
+- Kali Purple
+- Wazuh Manager
+- OpenSearch Dashboard
+- TheHive 5
+
+## Endpoint
+
+- Windows 10
+- Sysmon Installed
+- Wazuh Agent Installed
+
+---
+
+# Existing Integrations
+
+## Wazuh → TheHive
+
+Status:
+
+```text
+Working
+```
+
+The integration successfully forwards Wazuh alerts into TheHive.
+
+---
+
+# Completed Project
+
+## SOC Detection Engineering Lab – PowerShell Encoded Command Detection
+
+MITRE ATT&CK:
+
+```text
+T1059.001
+PowerShell
+```
+
+Project objectives:
+
+- Sysmon telemetry collection
+- Custom Wazuh detection rule
+- OpenSearch validation
+- TheHive alert escalation
+- MITRE ATT&CK mapping
+
+Repository:
+
+```text
+SOC-Detection-Engineering-Lab-PowerShell-Encoded-Command-Detection
+```
+
+---
+
+# Custom Detection Rule
+
+Rule purpose:
+
+```text
+Detect encoded PowerShell execution
+```
+
+Indicators:
+
+```text
+powershell.exe -e
+powershell.exe -enc
+powershell.exe -EncodedCommand
+```
+
+Status:
+
+```text
+Working
+```
+
+---
+
+# Common Issues Encountered
+
+## 1. Atomic Red Team Payload Execution Failed
+
+Error:
+
+```text
+Access is denied
+```
+
+Cause:
+
+- Atomic test required elevated privileges.
+- Payload execution blocked.
+
+Resolution:
+
+- Run PowerShell as Administrator.
+- Verify Atomic Red Team prerequisites.
+
+---
+
+## 2. Sysmon Alert Not Appearing
+
+Cause:
+
+- Sysmon event generated successfully.
+- Detection rule did not match telemetry.
+
+Resolution:
+
+- Review Sysmon Event ID.
+- Verify command line field mapping.
+- Validate local_rules.xml syntax.
+
+---
+
+## 3. TheHive Alert Not Appearing
+
+Cause:
+
+- Wazuh alert generated successfully.
+- Integration forwarding failed.
+
+Troubleshooting performed:
+
+- Verify API key.
+- Verify integration configuration.
+- Verify custom-thehive permissions.
+- Verify script execution.
+- Validate payload format.
+
+Resolution:
+
+- Fixed integration configuration.
+- Successfully generated TheHive alerts.
+
+Status:
+
+```text
+Resolved
+```
+
+---
+
+## 4. JSON Decode Error
+
+Error:
+
+```text
+json.decoder.JSONDecodeError
+```
+
+Cause:
+
+- Invalid JSON format during manual testing.
+
+Resolution:
+
+- Validate JSON structure.
+- Use proper alert payload format.
+
+---
+
+## 5. TheHive Dashboard Appeared Empty
+
+Cause:
+
+- Alerts filtered by active filters.
+
+Resolution:
+
+- Disable quick filters.
+- Verify alert visibility settings.
+
+Status:
+
+```text
+Resolved
+```
+
+---
+
+# Lessons Learned
+
+## Detection Engineering
+
+- Creating alerts is easier than creating meaningful detections.
+- Understanding telemetry is more important than writing rules.
+- Rule tuning is necessary to reduce false positives.
+
+---
+
+## Threat Hunting
+
+- Alerts should always be validated through telemetry.
+- Context is critical during investigations.
+- MITRE ATT&CK mapping improves analyst workflow.
+
+---
+
+## Incident Response
+
+- TheHive provides structured alert tracking.
+- Alert escalation requires enrichment and context.
+- Investigation notes are as important as the detection itself.
+
+---
+
+# Future Projects
+
+## Planned Project 1
+
+MITRE ATT&CK:
+
+```text
+T1053.005
+Scheduled Task
+```
+
+Goals:
+
+- Alert validation
+- Severity assessment
+- MITRE analysis
+- True positive investigation
+- False positive investigation
+- Case closure workflow
+
+---
+
+## Planned Project 2
+
+MITRE ATT&CK:
+
+```text
+T1110
+Brute Force
+```
+
+Goals:
+
+- Authentication failure monitoring
+- Event ID 4625 analysis
+- Threat hunting
+- Incident handling
+
+---
+
+## Planned Project 3
+
+MITRE ATT&CK:
+
+```text
+T1547
+Registry Run Keys
+```
+
+Goals:
+
+- Persistence detection
+- Registry monitoring
+- Alert triage
+- Case management
+
+---
+
+# Repository Structure Standard
+
+Every future project should follow:
+
+```text
+Overview
+Lab Environment
+Architecture
+Attack Simulation
+Telemetry Collection
+Detection Engineering
+Threat Hunting
+TheHive Integration
+Alert Validation
+Severity Assessment
+MITRE Analysis
+Investigation Notes
+Disposition
+Case Closure
+Lessons Learned
+Conclusion
+References
+```	
