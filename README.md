@@ -250,9 +250,13 @@ Medium
 
 ## Screenshots
 
-![Wazuh Alert](./images/wazuh-alert1.png)
+![Wazuh Alert](./images/threat-hunting.png)
+
+![DFIR Timeline](./images/iris-alert.png)
 
 ![DFIR Timeline](./images/iris-timeline.png)
+
+![DFIR IOC](./images/iris-ioc.png)
 
 ![Analyst Investigation](./images/analyst-note.png)
 
