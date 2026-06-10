@@ -31,7 +31,7 @@ The objective is to demonstrate how endpoint telemetry can be transformed into a
 
 # Architecture
 
-![Architecture Diagram](./images/Architecture.png)
+![Architecture Diagram](./images/architecture.png)
 
 ---
 
@@ -65,7 +65,7 @@ This behavior is commonly abused by threat actors to establish persistence and e
 
 ## Screenshot
 
-![Atomic Red Team Execution](./images/Atomic_Test.png)
+![Atomic Red Team Execution](./images/atomic-test.png)
 
 ---
 
@@ -99,7 +99,7 @@ Sysmon provided detailed visibility into process execution activity that became 
 
 ## Screenshot
 
-![Sysmon Event](./images/Sysmon_Event.png)
+![Sysmon Event](./images/sysmon-event.png)
 
 ---
 
@@ -170,9 +170,9 @@ Observed fields:
 
 ## Screenshots
 
-![Threat Hunting Results](./images/Threat_Hunting.png)
+![Threat Hunting Results](./images/threat_hunting.png)
 
-![Document Details](./images/Document_Details.png)
+![Document Details](./images/wazuh-alert1.png)
 
 ---
 
@@ -229,13 +229,13 @@ Medium
 
 ## Screenshots
 
-![Wazuh Alert](./images/TP_Wazuh_Alert.png)
+![Wazuh Alert](./images/wazuh-alert1.png)
 
-![DFIR Timeline](./images/TP_IRIS_Timeline.png)
+![DFIR Timeline](./images/iris-timeline.png)
 
-![Analyst Investigation](./images/TP_Analyst_Note.png)
+![Analyst Investigation](./images/analyst-note.png)
 
-![Case Closure](./images/TP_Case_Closure.png)
+![Case Closure](./images/case-closure.png)
 
 ---
 
@@ -298,15 +298,11 @@ Consider allowlisting approved administrative Scheduled Tasks or implementing ta
 
 ## Screenshots
 
-![False Positive Alert](./images/FP_Wazuh_Alert.png)
+![False Positive Alert](./images/fp-wazuh-alert.png)
 
-![Threat Hunting Validation](./images/FP_Threat_Hunting.png)
+![Analyst Investigation](./images/fp-analyst-note.png)
 
-![Document Details](./images/FP_Document_Details.png)
-
-![Analyst Investigation](./images/FP_Analyst_Note.png)
-
-![Case Closure](./images/FP_Case_Closure.png)
+![Case Closure](./images/fp-case-closure.png)
 
 ---
 
