@@ -133,9 +133,30 @@ Detection focus:
 MITRE ATT&CK Mapping:
 
 ```xml
-<mitre>
-  <id>T1053.005</id>
-</mitre>
+<rule id="100500" level="8">
+
+    <if_group>sysmon_event1</if_group>
+
+    <field name="win.eventdata.image">schtasks.exe</field>
+
+    <field name="win.eventdata.commandLine">create</field>
+
+    <description>
+      Scheduled Task Created
+    </description>
+
+    <mitre>
+      <id>T1053.005</id>
+    </mitre>
+
+    <group>
+      attack,
+      persistence,
+      scheduled_task
+    </group>
+
+  </rule>
+
 ```
 
 Generated Alert:
@@ -170,7 +191,7 @@ Observed fields:
 
 ## Screenshots
 
-![Threat Hunting Results](./images/threat_hunting.png)
+![Threat Hunting Results](./images/threat-hunting.png)
 
 ![Document Details](./images/wazuh-alert1.png)
 
