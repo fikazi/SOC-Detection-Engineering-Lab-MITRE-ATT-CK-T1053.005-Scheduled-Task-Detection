@@ -7,7 +7,7 @@
 
 ## Overview
 
-This project demonstrates an end-to-end Security Operations Center (SOC) workflow for detecting Scheduled Task creation activity using Sysmon, Wazuh, OpenSearch, and DFIR-IRIS.
+Unlike traditional detection labs that focus only on alert generation, this project demonstrates the complete SOC analyst workflow for detecting Scheduled Task creation activity using Sysmon, Wazuh, OpenSearch, and DFIR-IRIS, including alert triage, investigation, incident documentation, true positive validation, false positive analysis, and case closure.
 
 The lab validates detection coverage for MITRE ATT&CK technique T1053.005 (Scheduled Task) through both malicious simulation and benign administrative activity.
 
@@ -248,6 +248,10 @@ The task naming convention and execution parameters were consistent with authori
 
 Medium
 
+### Reason:
+
+Scheduled Tasks are commonly abused for persistence and automated execution.
+
 ## Screenshots
 
 ![Wazuh Alert](./images/threat-hunting.png)
@@ -369,6 +373,20 @@ Incident handling activities included:
 The platform was used to document both True Positive and False Positive investigation outcomes.
 
 ---
+
+## Case Management Workflow
+
+The following investigation workflow was used:
+
+1. Alert Validation
+2. Severity Assessment
+3. MITRE ATT&CK Analysis
+4. Telemetry Review
+5. Disposition Analysis
+6. Analyst Investigation Note
+7. Case Closure Summary
+
+Both True Positive and False Positive scenarios were documented through DFIR-IRIS.
 
 # Detection Workflow Summary
 
